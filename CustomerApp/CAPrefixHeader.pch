@@ -1,0 +1,28 @@
+//
+//  CAPrefixHeader.pch
+//  CustomerApp
+//
+//  Created by Onur Şahindur on 09/11/16.
+//  Copyright © 2016 onursahindur. All rights reserved.
+//
+
+#ifndef CAPrefixHeader_pch
+#define CAPrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CAManager.h"
+#import "CAAlertManager.h"
+#import "CANetworkManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+#define RGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define RGBA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#ifdef DEBUG
+#define DebugLog(...) NSLog(__VA_ARGS__)
+#else
+#define DebugLog( s, ... )
+#endif
+
+#endif /* CAPrefixHeader_pch */
