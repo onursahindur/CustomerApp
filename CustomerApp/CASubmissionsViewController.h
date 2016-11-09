@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CASubmissionsViewController.h
 //  CustomerApp
 //
 //  Created by Onur Şahindur on 09/11/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface CASubmissionsViewController : UIViewController
 
 @end
-

@@ -12,9 +12,14 @@
 		622CECCD1DD3149700DAFB4E /* CANetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECCC1DD3149700DAFB4E /* CANetworkManager.m */; };
 		622CECD01DD314A300DAFB4E /* CAAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECCF1DD314A300DAFB4E /* CAAlertManager.m */; };
 		622CECD51DD316AA00DAFB4E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECD41DD316AA00DAFB4E /* Reachability.m */; };
+		622CECD81DD33C4000DAFB4E /* CASubmissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECD71DD33C4000DAFB4E /* CASubmissionsViewController.m */; };
+		622CECDC1DD33D0C00DAFB4E /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECDB1DD33D0C00DAFB4E /* UIView+Loading.m */; };
+		622CECDF1DD3429B00DAFB4E /* CANavigationBarStyler.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECDE1DD3429B00DAFB4E /* CANavigationBarStyler.m */; };
+		622CECE21DD3474A00DAFB4E /* CASubmissionsLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECE11DD3474A00DAFB4E /* CASubmissionsLogic.m */; };
+		622CECEB1DD3498B00DAFB4E /* CAProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECEA1DD3498B00DAFB4E /* CAProject.m */; };
+		622CECEE1DD34AB900DAFB4E /* NSDictionary+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECED1DD34AB900DAFB4E /* NSDictionary+Additions.m */; };
 		626DEEA21DD310E900DFA46B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEA11DD310E900DFA46B /* main.m */; };
 		626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEA41DD310E900DFA46B /* AppDelegate.m */; };
-		626DEEA81DD310E900DFA46B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEA71DD310E900DFA46B /* ViewController.m */; };
 		626DEEAB1DD310E900DFA46B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEA91DD310E900DFA46B /* Main.storyboard */; };
 		626DEEAD1DD310E900DFA46B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEAC1DD310E900DFA46B /* Assets.xcassets */; };
 		626DEEB01DD310E900DFA46B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEAE1DD310E900DFA46B /* LaunchScreen.storyboard */; };
@@ -42,13 +47,23 @@
 		622CECD11DD314CE00DAFB4E /* CAPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAPrefixHeader.pch; sourceTree = "<group>"; };
 		622CECD31DD316AA00DAFB4E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		622CECD41DD316AA00DAFB4E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		622CECD61DD33C4000DAFB4E /* CASubmissionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASubmissionsViewController.h; sourceTree = "<group>"; };
+		622CECD71DD33C4000DAFB4E /* CASubmissionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmissionsViewController.m; sourceTree = "<group>"; };
+		622CECDA1DD33D0C00DAFB4E /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
+		622CECDB1DD33D0C00DAFB4E /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		622CECDD1DD3429B00DAFB4E /* CANavigationBarStyler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CANavigationBarStyler.h; sourceTree = "<group>"; };
+		622CECDE1DD3429B00DAFB4E /* CANavigationBarStyler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CANavigationBarStyler.m; sourceTree = "<group>"; };
+		622CECE01DD3474A00DAFB4E /* CASubmissionsLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASubmissionsLogic.h; sourceTree = "<group>"; };
+		622CECE11DD3474A00DAFB4E /* CASubmissionsLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmissionsLogic.m; sourceTree = "<group>"; };
+		622CECE91DD3498B00DAFB4E /* CAProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAProject.h; sourceTree = "<group>"; };
+		622CECEA1DD3498B00DAFB4E /* CAProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAProject.m; sourceTree = "<group>"; };
+		622CECEC1DD34AB900DAFB4E /* NSDictionary+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Additions.h"; sourceTree = "<group>"; };
+		622CECED1DD34AB900DAFB4E /* NSDictionary+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Additions.m"; sourceTree = "<group>"; };
 		623124EEDBC81E92BBF39D72 /* libPods-CustomerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEE9D1DD310E900DFA46B /* CustomerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEEA11DD310E900DFA46B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		626DEEA31DD310E900DFA46B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		626DEEA41DD310E900DFA46B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		626DEEA61DD310E900DFA46B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		626DEEA71DD310E900DFA46B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		626DEEAA1DD310E900DFA46B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		626DEEAC1DD310E900DFA46B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		626DEEAF1DD310E900DFA46B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,6 +116,17 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		622CECD91DD33CFB00DAFB4E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				622CECDA1DD33D0C00DAFB4E /* UIView+Loading.h */,
+				622CECDB1DD33D0C00DAFB4E /* UIView+Loading.m */,
+				622CECEC1DD34AB900DAFB4E /* NSDictionary+Additions.h */,
+				622CECED1DD34AB900DAFB4E /* NSDictionary+Additions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		626DEE941DD310E900DFA46B = {
 			isa = PBXGroup;
 			children = (
@@ -124,10 +150,9 @@
 		626DEE9F1DD310E900DFA46B /* CustomerApp */ = {
 			isa = PBXGroup;
 			children = (
+				622CECD91DD33CFB00DAFB4E /* Categories */,
 				626DEEA31DD310E900DFA46B /* AppDelegate.h */,
 				626DEEA41DD310E900DFA46B /* AppDelegate.m */,
-				626DEEA61DD310E900DFA46B /* ViewController.h */,
-				626DEEA71DD310E900DFA46B /* ViewController.m */,
 				626DEEA91DD310E900DFA46B /* Main.storyboard */,
 				626DEEAC1DD310E900DFA46B /* Assets.xcassets */,
 				626DEEAE1DD310E900DFA46B /* LaunchScreen.storyboard */,
@@ -171,6 +196,8 @@
 		626DEEC61DD3111E00DFA46B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				622CECE91DD3498B00DAFB4E /* CAProject.h */,
+				622CECEA1DD3498B00DAFB4E /* CAProject.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -184,6 +211,8 @@
 				622CECCC1DD3149700DAFB4E /* CANetworkManager.m */,
 				622CECCE1DD314A300DAFB4E /* CAAlertManager.h */,
 				622CECCF1DD314A300DAFB4E /* CAAlertManager.m */,
+				622CECDD1DD3429B00DAFB4E /* CANavigationBarStyler.h */,
+				622CECDE1DD3429B00DAFB4E /* CANavigationBarStyler.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -199,6 +228,8 @@
 		626DEEC91DD3116000DFA46B /* Logics */ = {
 			isa = PBXGroup;
 			children = (
+				622CECE01DD3474A00DAFB4E /* CASubmissionsLogic.h */,
+				622CECE11DD3474A00DAFB4E /* CASubmissionsLogic.m */,
 			);
 			name = Logics;
 			sourceTree = "<group>";
@@ -222,6 +253,8 @@
 		626DEECC1DD3117A00DFA46B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				622CECD61DD33C4000DAFB4E /* CASubmissionsViewController.h */,
+				622CECD71DD33C4000DAFB4E /* CASubmissionsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -436,13 +469,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				626DEEA81DD310E900DFA46B /* ViewController.m in Sources */,
+				622CECEE1DD34AB900DAFB4E /* NSDictionary+Additions.m in Sources */,
 				622CECCD1DD3149700DAFB4E /* CANetworkManager.m in Sources */,
+				622CECEB1DD3498B00DAFB4E /* CAProject.m in Sources */,
+				622CECD81DD33C4000DAFB4E /* CASubmissionsViewController.m in Sources */,
+				622CECDF1DD3429B00DAFB4E /* CANavigationBarStyler.m in Sources */,
 				622CECD01DD314A300DAFB4E /* CAAlertManager.m in Sources */,
 				622CECD51DD316AA00DAFB4E /* Reachability.m in Sources */,
 				622CECCA1DD3148900DAFB4E /* CAManager.m in Sources */,
 				626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */,
 				626DEEA21DD310E900DFA46B /* main.m in Sources */,
+				622CECE21DD3474A00DAFB4E /* CASubmissionsLogic.m in Sources */,
+				622CECDC1DD33D0C00DAFB4E /* UIView+Loading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
