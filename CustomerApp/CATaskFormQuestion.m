@@ -7,6 +7,7 @@
 //
 
 #import "CATaskFormQuestion.h"
+#import "CAAnswer.h"
 
 @implementation CATaskFormQuestion
 

@@ -20,7 +20,6 @@
         _type = [dict safeObjectForKey:@"type"];
         _questionId = [[dict safeObjectForKey:@"question_id"] integerValue];
         _value = [dict safeObjectForKey:@"value"];
-        _question = nil; // Will filled in CASubmission model
     }
     return self;
 }

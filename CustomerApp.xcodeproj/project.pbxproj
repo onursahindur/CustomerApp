@@ -31,6 +31,8 @@
 		62A1EC871DD4657000F415B7 /* CATaskFormQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC861DD4657000F415B7 /* CATaskFormQuestion.m */; };
 		62A1EC8A1DD46BBC00F415B7 /* CASubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC891DD46BBC00F415B7 /* CASubmission.m */; };
 		62A1EC8D1DD46BCC00F415B7 /* CAAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC8C1DD46BCC00F415B7 /* CAAnswer.m */; };
+		62A1EC911DD4A0FA00F415B7 /* CAAnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC8F1DD4A0FA00F415B7 /* CAAnswerTableViewCell.m */; };
+		62A1EC921DD4A0FA00F415B7 /* CAAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A1EC901DD4A0FA00F415B7 /* CAAnswerTableViewCell.xib */; };
 		CFD0F5D265A91662DC7A2A8C /* libPods-CustomerApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623124EEDBC81E92BBF39D72 /* libPods-CustomerApp.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,9 @@
 		62A1EC891DD46BBC00F415B7 /* CASubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmission.m; sourceTree = "<group>"; };
 		62A1EC8B1DD46BCB00F415B7 /* CAAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAAnswer.h; sourceTree = "<group>"; };
 		62A1EC8C1DD46BCC00F415B7 /* CAAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAAnswer.m; sourceTree = "<group>"; };
+		62A1EC8E1DD4A0FA00F415B7 /* CAAnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAAnswerTableViewCell.h; sourceTree = "<group>"; };
+		62A1EC8F1DD4A0FA00F415B7 /* CAAnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAAnswerTableViewCell.m; sourceTree = "<group>"; };
+		62A1EC901DD4A0FA00F415B7 /* CAAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CAAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		722A145B8F7DAE692EDD86DA /* Pods-CustomerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		787D4738A2DBAAD37295C855 /* Pods-CustomerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.release.xcconfig"; sourceTree = "<group>"; };
 		8CC1ECFD870D8E1BC7E51A77 /* Pods-CustomerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerAppTests/Pods-CustomerAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +282,9 @@
 				62A1EC7E1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.h */,
 				62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */,
 				62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */,
+				62A1EC8E1DD4A0FA00F415B7 /* CAAnswerTableViewCell.h */,
+				62A1EC8F1DD4A0FA00F415B7 /* CAAnswerTableViewCell.m */,
+				62A1EC901DD4A0FA00F415B7 /* CAAnswerTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -390,6 +398,7 @@
 				62A1EC841DD4626800F415B7 /* Localizable.strings in Resources */,
 				626DEEB01DD310E900DFA46B /* LaunchScreen.storyboard in Resources */,
 				626DEEAD1DD310E900DFA46B /* Assets.xcassets in Resources */,
+				62A1EC921DD4A0FA00F415B7 /* CAAnswerTableViewCell.xib in Resources */,
 				62A1EC821DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib in Resources */,
 				626DEEAB1DD310E900DFA46B /* Main.storyboard in Resources */,
 			);
@@ -511,6 +520,7 @@
 				622CECD01DD314A300DAFB4E /* CAAlertManager.m in Sources */,
 				62A1EC811DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m in Sources */,
 				622CECD51DD316AA00DAFB4E /* Reachability.m in Sources */,
+				62A1EC911DD4A0FA00F415B7 /* CAAnswerTableViewCell.m in Sources */,
 				622CECCA1DD3148900DAFB4E /* CAManager.m in Sources */,
 				62A1EC8A1DD46BBC00F415B7 /* CASubmission.m in Sources */,
 				626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */,

@@ -25,27 +25,32 @@
         for (NSDictionary *ansDict in [dict safeObjectForKey:@"answers"])
         {
             CAAnswer *answer = [[CAAnswer alloc] initWithDictionary:ansDict];
-            answer.question = [self findQuestion:answer.questionId];
+//            NSInteger indexOfQuestion = [self findQuestionIndex:answer.questionId];
+//            CATaskFormQuestion *question = [self.questionsArray objectAtIndex:indexOfQuestion];
+//            question.answer = answer;
+//            [self.questionsArray removeObjectAtIndex:indexOfQuestion];
+//            [self.questionsArray insertObject:question atIndex:indexOfQuestion];
             [_answerArray addObject:answer];
         }
     }
     return self;
 }
 
-- (CATaskFormQuestion *)findQuestion:(NSInteger)questionId
+- (NSInteger)findQuestionIndex:(NSInteger)questionId
 {
     for (CATaskFormQuestion *question in self.questionsArray)
     {
         if (question.questionId == questionId)
         {
-            return question;
+            return [self.questionsArray indexOfObject:question];
         }
     }
-    // Internal server error. Return mock Question to prevent any strange crash.
-    CATaskFormQuestion *mockQuestion = [CATaskFormQuestion new];
-    mockQuestion.labelText = @"";
-    DebugLog(@"Question not found. Mock Question using. Actual Q ID: %ld", questionId);
-    return mockQuestion;
+    return -1;
+//    // Internal server error. Return mock Question to prevent any strange crash.
+//    CATaskFormQuestion *mockQuestion = [CATaskFormQuestion new];
+//    mockQuestion.labelText = @"";
+//    DebugLog(@"Question not found. Mock Question using. Actual Q ID: %ld", questionId);
+//    return mockQuestion;
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "CATaskForm.h"
 #import "CASubmission.h"
 #import "CASubmissionCollectionViewCell.h"
+#import "CATaskFormQuestion.h"
 
 static NSInteger kStaticProjectId = 685;
 
@@ -163,12 +164,14 @@ static NSInteger kStaticProjectId = 685;
     return self.logic.submissions.count;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CASubmissionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CASubmissionCollectionViewCell class])
                                                                                      forIndexPath:indexPath];
-    
+    CASubmission *submission = self.logic.submissions[indexPath.row];
+    cell.questionsArray = submission.questionsArray;
+    cell.answersArray = submission.answerArray;
+    [cell reloadTableViewData];
     return cell;
 }
 
