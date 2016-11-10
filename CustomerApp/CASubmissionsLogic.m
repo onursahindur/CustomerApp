@@ -117,31 +117,7 @@
         {
             [weakSelf.delegate dataLoadedWithError:error withDataType:CASubmissionDataProjectTaskFormSubmissions];
         }
-    }];
-    
-    
+    }];   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

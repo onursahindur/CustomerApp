@@ -108,6 +108,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The currently expanded component. NSNotFound when no components are selected.
 @property (readonly, nonatomic) NSInteger selectedComponent;
 
+// Onur added
+@property (assign, nonatomic) NSInteger selectedRow;
+
 /// The number of components in the dropdown (cached from the data source).
 - (NSInteger)numberOfComponents;
 

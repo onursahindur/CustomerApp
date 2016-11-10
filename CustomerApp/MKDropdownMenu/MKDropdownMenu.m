@@ -1654,6 +1654,7 @@ static const CGFloat kScrollViewBottomSpace = 5;
     } else if ([self.delegate respondsToSelector:@selector(dropdownMenu:didSelectRow:inComponent:)]) {
         
         // Onur edited.
+        self.selectedRow = row;
         MKDropdownMenuComponentButton *button = [self.buttons firstObject];
         [button setAttributedTitle:[[NSAttributedString alloc] initWithString:[self.delegate dropdownMenu:self titleForRow:row forComponent:self.selectedComponent]] selectedTitle:[[NSAttributedString alloc] initWithString:[self.delegate dropdownMenu:self titleForRow:row forComponent:self.selectedComponent]]];
         ////////////////////////

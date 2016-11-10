@@ -50,9 +50,7 @@ static CGFloat const kLeftPadding = 10.0f;
 {
     CAAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier];
     CATaskFormQuestion *question = self.questionsArray[indexPath.row];
-    
     NSArray *belongingAnswers = [self findAnswers:question];
-    
     cell.questionLabel.text = question.labelText;
     
     if (question.questionType == CAQuestionTypeImage
@@ -74,7 +72,6 @@ static CGFloat const kLeftPadding = 10.0f;
     
     CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
     cell.answerLabelHeightConstraint.constant = estimatedHeight;
-    
     return cell;
 }
 
@@ -110,7 +107,6 @@ static CGFloat const kLeftPadding = 10.0f;
         NSString *pointString = [belongingAnswer.value substringWithRange:NSMakeRange(startIndex.location + 1, endIndex.location - startIndex.location - 1)];
         CGFloat latitude = [[[pointString componentsSeparatedByString:@" "] lastObject] floatValue];
         CGFloat longitude = [[[pointString componentsSeparatedByString:@" "] firstObject] floatValue];
-        DebugLog(@"Internal Server Error");
         NSString *appleMapsLink = [NSString stringWithFormat:@"http://maps.apple.com/maps?ll=%f,%f", latitude, longitude];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString: appleMapsLink]];
     }

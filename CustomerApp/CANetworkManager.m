@@ -11,7 +11,6 @@
 
 static NSString *kUserEmail                             = @"john@doe";
 static NSString *kUserPassword                          = @"123456";
-
 static NSString *kCABaseURL                             = @"http://api-sb.twentify.com/customer_api/v1";
 static NSString *kTokenURL                              = @"tokens";
 static NSString *kProjectsURL                           = @"projects";

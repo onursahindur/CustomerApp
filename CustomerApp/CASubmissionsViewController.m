@@ -94,6 +94,7 @@ static NSInteger kStaticProjectId = 685;
     }];
 }
 
+#pragma mark - Logic Delegate Methods
 - (void)dataLoadedWithDataType:(CASubmissionDataType)dataType
 {
     [self.view dismissLoadingView];
@@ -129,7 +130,34 @@ static NSInteger kStaticProjectId = 685;
     }
 }
 
-#pragma mark - Dropdown Menu
+- (void)dataLoadedWithError:(NSError *)error withDataType:(CASubmissionDataType)dataType
+{
+    [self.view dismissLoadingView];
+    __weak typeof (self) weakSelf = self;
+    [CAAlertManager showAlertWithTitle:NSLocalizedString(@"Error", nil)
+                               message:error.localizedDescription
+                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                     otherButtonTitles:@[NSLocalizedString(@"TryAgain", nil)]
+                        viewController:self
+                     completionHandler:^(NSInteger buttonClicked) {
+        if (buttonClicked == 1)
+        {
+            __strong typeof (weakSelf) strongSelf = weakSelf;
+            if (dataType == CASubmissionDataProjectTaskForms)
+            {
+                [strongSelf fetchTaskForms];
+            }
+            else if (dataType == CASubmissionDataProjectTaskFormSubmissions)
+            {
+                [strongSelf dropdownMenu:strongSelf.taskFormListMenu
+                            didSelectRow:strongSelf.taskFormListMenu.selectedRow
+                             inComponent:strongSelf.taskFormListMenu.selectedComponent];
+            }
+        }
+    }];
+}
+
+#pragma mark - Dropdown Menu Delegate & Datasource
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
 {
     return 1;
@@ -153,6 +181,7 @@ static NSInteger kStaticProjectId = 685;
 
 - (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    
     [dropdownMenu closeAllComponentsAnimated:YES];
     CATaskForm *task = [self.logic.projectTaskForms objectAtIndex:row];
     [self.view showLoadingView];
