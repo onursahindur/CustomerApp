@@ -15,8 +15,9 @@ static NSString *kUserPassword                          = @"123456";
 static NSString *kCABaseURL                             = @"http://api-sb.twentify.com/customer_api/v1";
 static NSString *kTokenURL                              = @"tokens";
 static NSString *kProjectsURL                           = @"projects";
-static NSString *kProjectTaskformsURL                   = @"projects/%@/task_forms"; // %@ represents project id
-static NSString *kProjectTaskformSubmissionsURL         = @"projects/%@/task_forms/%@/submissions"; // first %@ is project id, second is taskform id.
+static NSString *kProjectTaskformsURL                   = @"projects/%ld/task_forms";
+static NSString *kProjectTaskformQuestionsURL           = @"projects/%ld/task_forms/%ld/";
+static NSString *kProjectTaskformSubmissionsURL         = @"projects/%ld/task_forms/%ld/submissions";
 
 @implementation CANetworkManager
 
@@ -263,7 +264,7 @@ static NSString *kProjectTaskformSubmissionsURL         = @"projects/%@/task_for
     }];
 }
 
-- (void)getProjectTaskFormsWithProjectId:(NSString *)projectId
+- (void)getProjectTaskFormsWithProjectId:(NSInteger)projectId
                         withSuccessBlock:(void (^)(NSArray *))successBlock
                             failureBlock:(FailureBlock)failureBlock
 {
@@ -284,8 +285,50 @@ static NSString *kProjectTaskformSubmissionsURL         = @"projects/%@/task_for
 }
 
 
+- (void)getProjectTaskFormQuestionsWithProjectId:(NSInteger)projectId
+                                  withTaskFormId:(NSInteger)taskFormId
+                                 withSuccessBlock:(void (^)(NSArray *))successBlock
+                                     failureBlock:(FailureBlock)failureBlock
+{
+    NSString *urlString = [NSString stringWithFormat:kProjectTaskformQuestionsURL, projectId, taskFormId];
+    [self GET:urlString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]
+            && [responseObject[@"data"][@"questions"] isKindOfClass:[NSArray class]])
+        {
+            
+            successBlock((NSArray *)(responseObject[@"data"][@"questions"]));
+        }
+        else
+        {
+            successBlock(nil);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failureBlock(error);
+    }];
+}
 
 
+- (void)getProjectTaskFormSubmissionsWithProjectId:(NSInteger)projectId
+                                    withTaskFormId:(NSInteger)taskFormId
+                                   withSuccessBlock:(void (^)(NSArray *))successBlock
+                                       failureBlock:(FailureBlock)failureBlock
+{
+    NSString *urlString = [NSString stringWithFormat:kProjectTaskformSubmissionsURL, projectId, taskFormId];
+    [self GET:urlString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]])
+        {
+            
+            successBlock((NSArray *)(responseObject[@"data"]));
+        }
+        else
+        {
+            successBlock(nil);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failureBlock(error);
+    }];
+    
+}
 
 
 

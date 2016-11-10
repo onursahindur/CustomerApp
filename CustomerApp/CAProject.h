@@ -20,7 +20,7 @@ typedef enum
 
 @interface CAProject : NSObject
 
-@property (nonatomic, strong) NSString                  *projectId;
+@property (nonatomic, assign) NSInteger                 projectId;
 @property (nonatomic, strong) NSString                  *name;
 @property (nonatomic, strong) NSString                  *logoURLString;
 @property (nonatomic, strong) NSDate                    *startedDate;

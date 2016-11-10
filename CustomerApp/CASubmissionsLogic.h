@@ -10,7 +10,6 @@ typedef enum
 {
     CASubmissionDataProjects,
     CASubmissionDataProjectTaskForms,
-    CASubmissionDataProjectTaskFormQuestions,
     CASubmissionDataProjectTaskFormSubmissions
 }CASubmissionDataType;
 
@@ -27,7 +26,9 @@ typedef enum
 @interface CASubmissionsLogic : NSObject
 
 - (void)loadProjects;
-- (void)loadProjectTaskForms:(NSString *)projectId;
+- (void)loadProjectTaskForms:(NSInteger)projectId;
+- (void)loadProjectSubmissions:(NSInteger)projectId
+                withTaskFormId:(NSInteger)taskFormId;
 
 // Data to be collected.
 @property (nonatomic, strong) NSMutableArray *projects;

@@ -8,8 +8,8 @@
 
 @interface CATaskForm : NSObject
 
-@property (nonatomic, strong) NSString *taskFormId;
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, assign) NSInteger taskFormId;
+@property (nonatomic, strong) NSString  *title;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 

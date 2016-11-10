@@ -15,7 +15,7 @@
     self = [super init];
     if (self)
     {
-        _projectId = [dict safeObjectForKey:@"id"];
+        _projectId = [[dict safeObjectForKey:@"id"] integerValue];
         _name = [dict safeObjectForKey:@"name"];
         _logoURLString = [dict safeObjectForKey:@"logo_url"];
         _status = [[dict safeObjectForKey:@"status"] isEqualToString:@"available"] ? CAProjectAvailable : CAProjectNotAvailable;

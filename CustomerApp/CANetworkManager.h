@@ -19,8 +19,18 @@ typedef void (^FailureBlock)(NSError *error);
 - (void)getProjectListWithSuccessBlock:(void (^)(NSArray *))successBlock
                           failureBlock:(FailureBlock)failureBlock;
 
-- (void)getProjectTaskFormsWithProjectId:(NSString *)projectId
+- (void)getProjectTaskFormsWithProjectId:(NSInteger)projectId
                         withSuccessBlock:(void (^)(NSArray *))successBlock
                             failureBlock:(FailureBlock)failureBlock;
+
+- (void)getProjectTaskFormQuestionsWithProjectId:(NSInteger)projectId
+                                  withTaskFormId:(NSInteger)taskFormId
+                                withSuccessBlock:(void (^)(NSArray *))successBlock
+                                    failureBlock:(FailureBlock)failureBlock;
+
+- (void)getProjectTaskFormSubmissionsWithProjectId:(NSInteger)projectId
+                                    withTaskFormId:(NSInteger)taskFormId
+                                  withSuccessBlock:(void (^)(NSArray *))successBlock
+                                      failureBlock:(FailureBlock)failureBlock;
 
 @end

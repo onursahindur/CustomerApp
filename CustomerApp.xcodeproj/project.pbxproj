@@ -27,6 +27,10 @@
 		626DEEBB1DD310EA00DFA46B /* CustomerAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEBA1DD310EA00DFA46B /* CustomerAppTests.m */; };
 		62A1EC811DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */; };
 		62A1EC821DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */; };
+		62A1EC841DD4626800F415B7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62A1EC831DD4626800F415B7 /* Localizable.strings */; };
+		62A1EC871DD4657000F415B7 /* CATaskFormQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC861DD4657000F415B7 /* CATaskFormQuestion.m */; };
+		62A1EC8A1DD46BBC00F415B7 /* CASubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC891DD46BBC00F415B7 /* CASubmission.m */; };
+		62A1EC8D1DD46BCC00F415B7 /* CAAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC8C1DD46BCC00F415B7 /* CAAnswer.m */; };
 		CFD0F5D265A91662DC7A2A8C /* libPods-CustomerApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623124EEDBC81E92BBF39D72 /* libPods-CustomerApp.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +83,13 @@
 		62A1EC7E1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASubmissionCollectionViewCell.h; sourceTree = "<group>"; };
 		62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmissionCollectionViewCell.m; sourceTree = "<group>"; };
 		62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CASubmissionCollectionViewCell.xib; sourceTree = "<group>"; };
+		62A1EC831DD4626800F415B7 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		62A1EC851DD4657000F415B7 /* CATaskFormQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATaskFormQuestion.h; sourceTree = "<group>"; };
+		62A1EC861DD4657000F415B7 /* CATaskFormQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATaskFormQuestion.m; sourceTree = "<group>"; };
+		62A1EC881DD46BBC00F415B7 /* CASubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASubmission.h; sourceTree = "<group>"; };
+		62A1EC891DD46BBC00F415B7 /* CASubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmission.m; sourceTree = "<group>"; };
+		62A1EC8B1DD46BCB00F415B7 /* CAAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAAnswer.h; sourceTree = "<group>"; };
+		62A1EC8C1DD46BCC00F415B7 /* CAAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAAnswer.m; sourceTree = "<group>"; };
 		722A145B8F7DAE692EDD86DA /* Pods-CustomerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		787D4738A2DBAAD37295C855 /* Pods-CustomerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.release.xcconfig"; sourceTree = "<group>"; };
 		8CC1ECFD870D8E1BC7E51A77 /* Pods-CustomerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerAppTests/Pods-CustomerAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +189,7 @@
 			children = (
 				626DEEA11DD310E900DFA46B /* main.m */,
 				622CECD11DD314CE00DAFB4E /* CAPrefixHeader.pch */,
+				62A1EC831DD4626800F415B7 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,6 +220,12 @@
 				622CECEA1DD3498B00DAFB4E /* CAProject.m */,
 				622CED2C1DD3746700DAFB4E /* CATaskForm.h */,
 				622CED2D1DD3746700DAFB4E /* CATaskForm.m */,
+				62A1EC851DD4657000F415B7 /* CATaskFormQuestion.h */,
+				62A1EC861DD4657000F415B7 /* CATaskFormQuestion.m */,
+				62A1EC881DD46BBC00F415B7 /* CASubmission.h */,
+				62A1EC891DD46BBC00F415B7 /* CASubmission.m */,
+				62A1EC8B1DD46BCB00F415B7 /* CAAnswer.h */,
+				62A1EC8C1DD46BCC00F415B7 /* CAAnswer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -369,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A1EC841DD4626800F415B7 /* Localizable.strings in Resources */,
 				626DEEB01DD310E900DFA46B /* LaunchScreen.storyboard in Resources */,
 				626DEEAD1DD310E900DFA46B /* Assets.xcassets in Resources */,
 				62A1EC821DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib in Resources */,
@@ -483,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A1EC8D1DD46BCC00F415B7 /* CAAnswer.m in Sources */,
 				622CECEE1DD34AB900DAFB4E /* NSDictionary+Additions.m in Sources */,
 				622CECCD1DD3149700DAFB4E /* CANetworkManager.m in Sources */,
 				622CECEB1DD3498B00DAFB4E /* CAProject.m in Sources */,
@@ -492,11 +512,13 @@
 				62A1EC811DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m in Sources */,
 				622CECD51DD316AA00DAFB4E /* Reachability.m in Sources */,
 				622CECCA1DD3148900DAFB4E /* CAManager.m in Sources */,
+				62A1EC8A1DD46BBC00F415B7 /* CASubmission.m in Sources */,
 				626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */,
 				626DEEA21DD310E900DFA46B /* main.m in Sources */,
 				622CECE21DD3474A00DAFB4E /* CASubmissionsLogic.m in Sources */,
 				622CED2E1DD3746700DAFB4E /* CATaskForm.m in Sources */,
 				622CECDC1DD33D0C00DAFB4E /* UIView+Loading.m in Sources */,
+				62A1EC871DD4657000F415B7 /* CATaskFormQuestion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

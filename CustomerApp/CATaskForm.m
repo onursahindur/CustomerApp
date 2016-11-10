@@ -15,7 +15,7 @@
     self = [super init];
     if (self)
     {
-        _taskFormId = [dict safeObjectForKey:@"id"];
+        _taskFormId = [[dict safeObjectForKey:@"id"] integerValue];
         _title = [dict safeObjectForKey:@"title"];
     }
     return self;

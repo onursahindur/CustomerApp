@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  CustomerApp
+
+  Created by Onur Şahindur on 10/11/16.
+  Copyright © 2016 onursahindur. All rights reserved.
+*/
+
+
+// Submission page general messages
+"Submissions" = "Submissions";
+"SelectTaskForm" = "Please select a taskform";
+
+
+
+// Error messages
+"Error" = "Error";
+"NoTaskForm" = "This project does not contain any taskform.";
+"NoSubmissions" = "This taskform does not contain any submissions.";
+"OK" = "OK";
+

@@ -11,14 +11,18 @@
 #import <MKDropdownMenu/MKDropdownMenu.h>
 #import "Masonry.h"
 #import "CATaskForm.h"
+#import "CASubmission.h"
 #import "CASubmissionCollectionViewCell.h"
+
+static NSInteger kStaticProjectId = 685;
 
 @interface CASubmissionsViewController () <CASubmissionsLogicDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate,
                                                         UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
-@property (assign, nonatomic) NSInteger                 currentPage;
 
+@property (assign, nonatomic) NSInteger                 currentPage;
 @property (strong, nonatomic) CASubmissionsLogic        *logic;
 @property (strong, nonatomic) MKDropdownMenu            *taskFormListMenu;
+
 @property (weak, nonatomic) IBOutlet UILabel            *projectTaskFormLabel;
 @property (weak, nonatomic) IBOutlet UIView             *submissionsView;
 @property (weak, nonatomic) IBOutlet UICollectionView   *collectionView;
@@ -47,11 +51,12 @@
     self.currentPage = 0;
     self.backButton.enabled = NO;
     self.middleButton.userInteractionEnabled = NO;
+    self.submissionsView.hidden = YES;
 }
 
 - (void)styleNavigationBar
 {
-    [CANavigationBarStyler addLeftAlignedTitle:@"Submissions" withViewController:self];
+    [CANavigationBarStyler addLeftAlignedTitle:NSLocalizedString(@"Submissions", nil) withViewController:self];
     [CANavigationBarStyler styleNavigationBarColorsWithTintColor:[UIColor whiteColor]
                                                 withBarTintColor:RGB(51, 84, 156)
                                                     withBarStyle:UIStatusBarStyleLightContent
@@ -63,7 +68,7 @@
 {
     self.projectTaskFormLabel.hidden = YES;
     [self.view showLoadingView];
-    [self.logic loadProjectTaskForms:@"685"];
+    [self.logic loadProjectTaskForms:kStaticProjectId];
 }
 
 - (void)initTaskFormListMenu
@@ -93,11 +98,11 @@
     [self.view dismissLoadingView];
     if (dataType == CASubmissionDataProjectTaskForms)
     {
-        if (self.logic.projectTaskForms.count == 0)
+        if (!self.logic.projectTaskForms || self.logic.projectTaskForms.count == 0)
         {
-            [CAAlertManager showAlertWithTitle:@"Error"
-                                       message:@"This project does not contain any taskform."
-                             cancelButtonTitle:@"OK"
+            [CAAlertManager showAlertWithTitle:NSLocalizedString(@"Error", nil)
+                                       message:NSLocalizedString(@"NoTaskForm", nil)
+                             cancelButtonTitle:NSLocalizedString(@"OK", nil)
                              otherButtonTitles:nil
                                 viewController:self
                              completionHandler:nil];
@@ -106,7 +111,21 @@
         self.projectTaskFormLabel.hidden = NO;
         [self initTaskFormListMenu];
     }
-    
+    else if (dataType == CASubmissionDataProjectTaskFormSubmissions)
+    {
+        if (!self.logic.submissions || self.logic.submissions.count == 0)
+        {
+            [CAAlertManager showAlertWithTitle:NSLocalizedString(@"Error", nil)
+                                       message:NSLocalizedString(@"NoSubmissions", nil)
+                             cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                             otherButtonTitles:nil
+                                viewController:self
+                             completionHandler:nil];
+            return;
+        }
+        self.submissionsView.hidden = NO;
+        [self.collectionView reloadData];
+    }
 }
 
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
@@ -116,7 +135,7 @@
 
 - (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForComponent:(NSInteger)component
 {
-    return @"Please select a taskform";
+    return NSLocalizedString(@"SelectTaskForm", nil);
 }
 
 - (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component
@@ -134,20 +153,21 @@
 {
     [dropdownMenu closeAllComponentsAnimated:YES];
     CATaskForm *task = [self.logic.projectTaskForms objectAtIndex:row];
-    
-    
+    [self.view showLoadingView];
+    [self.logic loadProjectSubmissions:kStaticProjectId withTaskFormId:task.taskFormId];
 }
 
 #pragma mark - CollectionView DataSource & Delegates
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    return self.logic.submissions.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CASubmissionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CASubmissionCollectionViewCell class]) forIndexPath:indexPath];
+    CASubmissionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CASubmissionCollectionViewCell class])
+                                                                                     forIndexPath:indexPath];
     
     return cell;
 }
@@ -160,27 +180,19 @@
 #pragma mark - Actions
 - (IBAction)navigationButtonTapped:(id)sender
 {
-    if (sender == self.nextButton)
-    {
-        self.currentPage++;
-        
-    }
-    else
-    {
-        self.currentPage--;
-        
-    }
+    self.currentPage = (sender == self.nextButton) ? self.currentPage + 1 : self.currentPage - 1;
     self.nextButton.enabled = (self.currentPage <= self.logic.projectTaskForms.count) ? YES : NO;
     self.backButton.enabled = (self.currentPage > 0) ? YES : NO;
-    DebugLog([NSString stringWithFormat:@"%ld", (long)self.currentPage]);
     [self.middleButton setTitle:[NSString stringWithFormat:@"%ld", (long)self.currentPage+1] forState:UIControlStateNormal];
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentPage inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentPage inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:YES];
 }
 
 #pragma mark - ScrollView
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    // Since we ensure paging [self.collectionView visibleCells] method will return only one element.
+    // Since we supply paging, [self.collectionView visibleCells] method should return only one element.
     // In case of strange crashes, be sure it contains one element.
     if ([self.collectionView visibleCells].count == 1)
     {
@@ -195,7 +207,8 @@
         }
         else
         {
-            // same page do nothing.
+            // Same page do nothing..  Nothing to do here..
+            // Don't want to live on this "else" planet anymore..
         }
     }
 }
