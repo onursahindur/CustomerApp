@@ -8,7 +8,7 @@
 
 #import "CASubmissionsViewController.h"
 #import "CASubmissionsLogic.h"
-#import <MKDropdownMenu/MKDropdownMenu.h>
+#import "MKDropdownMenu.h"
 #import "Masonry.h"
 #import "CATaskForm.h"
 #import "CASubmission.h"
@@ -129,6 +129,7 @@ static NSInteger kStaticProjectId = 685;
     }
 }
 
+#pragma mark - Dropdown Menu
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
 {
     return 1;
