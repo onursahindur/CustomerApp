@@ -8,8 +8,9 @@
 
 @interface CASubmissionCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) NSMutableArray *questionsArray;
-@property (nonatomic, strong) NSMutableArray *answersArray;
+@property (nonatomic, strong) NSMutableArray    *questionsArray;
+@property (nonatomic, strong) NSMutableArray    *answersArray;
+@property (nonatomic, strong) UIViewController  *parentViewController;
 
 - (void)reloadTableViewData;
 

@@ -5,6 +5,7 @@ pod 'SDWebImage', '~>3.7'
 pod 'MKDropdownMenu'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'Masonry'
+pod 'MWPhotoBrowser'
 
 end
 
@@ -15,5 +16,6 @@ pod 'SDWebImage', '~>3.7'
 pod 'MKDropdownMenu'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'Masonry'
+pod 'MWPhotoBrowser'
 
 end

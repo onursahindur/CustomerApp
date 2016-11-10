@@ -171,6 +171,7 @@ static NSInteger kStaticProjectId = 685;
     CASubmission *submission = self.logic.submissions[indexPath.row];
     cell.questionsArray = submission.questionsArray;
     cell.answersArray = submission.answerArray;
+    cell.parentViewController = self;
     [cell reloadTableViewData];
     return cell;
 }

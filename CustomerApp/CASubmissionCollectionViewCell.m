@@ -11,12 +11,14 @@
 #import "CATaskFormQuestion.h"
 #import "CAAnswer.h"
 #import "UIImageView+WebCache.h"
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
 
 static NSString *const kTableViewCellIdentifier = @"CAAnswerTableViewCell";
 
-@interface CASubmissionCollectionViewCell () <UITableViewDelegate, UITableViewDataSource>
+@interface CASubmissionCollectionViewCell () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) MWPhoto *bigPhotoToDisplay;
 
 @end
 
@@ -51,24 +53,47 @@ static CGFloat const kLeftPadding = 10.0f;
     CAAnswer *belongingAnswer = [self findAnswer:question];
     cell.questionLabel.text = question.labelText;
     cell.answerLabel.text = belongingAnswer ? belongingAnswer.value : NSLocalizedString(@"NoAnswer", nil);
+    if ([cell.answerLabel.text containsString:@"http"]
+        && [cell.answerLabel.text containsString:@"photos"])
+    {
+        cell.answerLabel.text = NSLocalizedString(@"TapToSeeBig", nil);
+    }
     CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
     cell.answerLabelHeightConstraint.constant = estimatedHeight;
-    if ([cell.answerLabel.text containsString:@"photos"])
-    {
-        cell.imageUploadedView.hidden = NO;
-        [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:cell.answerLabel.text]
-                                  placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
-        cell.imageViewHeightConstraint.constant = 70.0f;
-        cell.imageViewWidthConstraint.constant = 70.0f;
-        cell.answerLabelLeftConstraint.constant = kLeftPadding * kLeftPadding;
-    }
-    else
-    {
-        cell.imageUploadedView.hidden = YES;
-        cell.answerLabelLeftConstraint.constant = kLeftPadding;
-    }
+    
+    
+    // Since images are loading with big sizes, no thumbnails are used, They are loading with low speed.
+    // This causes that UITableView to not scroll smoothly. Comment in the code below, to see how it works.
+//    if ([cell.answerLabel.text containsString:@"photos"])
+//    {
+//        cell.imageUploadedView.hidden = NO;
+//        [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:cell.answerLabel.text]
+//                                  placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
+//        cell.imageViewHeightConstraint.constant = 70.0f;
+//        cell.imageViewWidthConstraint.constant = 70.0f;
+//        cell.answerLabelLeftConstraint.constant = kLeftPadding * kLeftPadding;
+//    }
+//    else
+//    {
+//        cell.imageUploadedView.hidden = YES;
+//        cell.answerLabelLeftConstraint.constant = kLeftPadding;
+//    }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CAAnswerTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    CATaskFormQuestion *question = self.questionsArray[indexPath.row];
+    if ([cell.answerLabel.text isEqualToString:NSLocalizedString(@"TapToSeeBig", nil)])
+    {
+        CAAnswer *belongingAnswer = [self findAnswer:question];
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        self.bigPhotoToDisplay = [MWPhoto photoWithURL:[NSURL URLWithString:belongingAnswer.value]];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:browser];
+        [self.parentViewController presentViewController:navController animated:YES completion:nil];
+    }
 }
 
 - (void)reloadTableViewData
@@ -100,6 +125,17 @@ static CGFloat const kLeftPadding = 10.0f;
                                                     }
                                           context:nil].size;
     
+}
+
+#pragma mark - MWPhoto Delegate
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return 1;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    return self.bigPhotoToDisplay;
 }
 
 

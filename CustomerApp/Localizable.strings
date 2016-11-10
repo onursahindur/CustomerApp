@@ -11,7 +11,8 @@
 "Submissions" = "Submissions";
 "SelectTaskForm" = "Please select a taskform";
 
-
+// CASubmissionCollectionViewCell
+"TapToSeeBig" = "(Tap here to see the big photo)";
 
 // Error messages
 "Error" = "Error";
