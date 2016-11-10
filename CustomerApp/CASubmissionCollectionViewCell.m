@@ -18,7 +18,7 @@ static NSString *const kTableViewCellIdentifier = @"CAAnswerTableViewCell";
 @interface CASubmissionCollectionViewCell () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView    *tableView;
-@property (strong, nonatomic) MWPhoto               *bigPhotoToDisplay;
+@property (strong, nonatomic) NSMutableArray        *photoArray;
 
 @end
 
@@ -50,18 +50,18 @@ static CGFloat const kLeftPadding = 10.0f;
 {
     CAAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier];
     CATaskFormQuestion *question = self.questionsArray[indexPath.row];
-    CAAnswer *belongingAnswer = [self findAnswer:question];
+    
+    NSArray *belongingAnswers = [self findAnswers:question];
+    
     cell.questionLabel.text = question.labelText;
-    cell.answerLabel.text = belongingAnswer ? belongingAnswer.value : NSLocalizedString(@"NoAnswer", nil);
     
     if (question.questionType == CAQuestionTypeImage
         || question.questionType == CAQuestionTypeLocation)
     {
         cell.imageUploadedView.hidden = NO;
-        [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:belongingAnswer.value]
-                                  placeholderImage:[UIImage imageNamed:question.questionType == CAQuestionTypeImage ? @"photoPlaceholder" : @"location"]];
+        cell.imageUploadedView.image = [UIImage imageNamed:question.questionType == CAQuestionTypeImage ? @"photo" : @"location"];
         cell.answerLabelLeftConstraint.constant = kLeftPadding * 5;
-        cell.answerLabel.text = NSLocalizedString(question.questionType == CAQuestionTypeImage ? @"TapToSeeBig" : @"TapToSeeLocation", nil);
+        cell.answerLabel.text = (question.questionType == CAQuestionTypeImage) ? [NSString stringWithFormat:NSLocalizedString(@"TapToSeeBig",nil), belongingAnswers.count] : NSLocalizedString(@"TapToSeeLocation",nil);
         cell.answerLabel.font = [UIFont italicSystemFontOfSize:15.0f];
     }
     else
@@ -69,6 +69,7 @@ static CGFloat const kLeftPadding = 10.0f;
         cell.imageUploadedView.hidden = YES;
         cell.answerLabelLeftConstraint.constant = kLeftPadding;
         cell.answerLabel.font = [UIFont systemFontOfSize:15.0f];
+        cell.answerLabel.text = (belongingAnswers.count > 0) ? ((CAAnswer *)[belongingAnswers firstObject]).value : NSLocalizedString(@"NoAnswer", nil);
     }
     
     CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
@@ -82,16 +83,21 @@ static CGFloat const kLeftPadding = 10.0f;
     CATaskFormQuestion *question = self.questionsArray[indexPath.row];
     if (question.questionType == CAQuestionTypeImage)
     {
-        CAAnswer *belongingAnswer = [self findAnswer:question];
+        NSArray *belongingAnswers = [self findAnswers:question];
         MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-        self.bigPhotoToDisplay = [MWPhoto photoWithURL:[NSURL URLWithString:belongingAnswer.value]];
-        self.bigPhotoToDisplay.caption = question.labelText;
+        self.photoArray = [NSMutableArray new];
+        for (CAAnswer *answer in belongingAnswers)
+        {
+            MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:answer.value]];
+            photo.caption = question.labelText;
+            [self.photoArray addObject:photo];
+        }
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:browser];
         [self.parentViewController presentViewController:navController animated:YES completion:nil];
     }
     else if (question.questionType == CAQuestionTypeLocation)
     {
-        CAAnswer *belongingAnswer = [self findAnswer:question];
+        CAAnswer *belongingAnswer = [[self findAnswers:question] firstObject];
         NSRange startIndex = [belongingAnswer.value rangeOfString:@"("];
         NSRange endIndex = [belongingAnswer.value rangeOfString:@")"];
         
@@ -118,16 +124,17 @@ static CGFloat const kLeftPadding = 10.0f;
 }
 
 #pragma mark - Helpers
-- (CAAnswer *)findAnswer:(CATaskFormQuestion *)question
+- (NSArray *)findAnswers:(CATaskFormQuestion *)question
 {
+    NSMutableArray *answers = [NSMutableArray new];
     for (CAAnswer *answer in self.answersArray)
     {
         if (answer.questionId == question.questionId)
         {
-            return answer;
+            [answers addObject:answer];
         }
     }
-    return nil;
+    return answers;
 }
 
 - (CGSize)sizeOfMultiLineLabel:(UILabel *)label
@@ -147,12 +154,12 @@ static CGFloat const kLeftPadding = 10.0f;
 #pragma mark - MWPhoto Delegate
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
 {
-    return 1;
+    return self.photoArray.count;
 }
 
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
 {
-    return self.bigPhotoToDisplay;
+    return [self.photoArray objectAtIndex:index];
 }
 
 

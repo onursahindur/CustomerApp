@@ -91,7 +91,7 @@
                                         <state key="normal" title="1" backgroundImage="center"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbj-C5-Uh7">
-                                        <rect key="frame" x="185" y="364" width="20" height="20"/>
+                                        <rect key="frame" x="190" y="364" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Uf7-FB-Kiz"/>
                                             <constraint firstAttribute="width" constant="20" id="ug7-MM-Thp"/>
@@ -102,7 +102,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QT-MB-Z5y">
-                                        <rect key="frame" x="115" y="364" width="20" height="20"/>
+                                        <rect key="frame" x="110" y="364" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="yf5-av-TLH"/>
                                             <constraint firstAttribute="height" constant="20" id="ztb-Sc-m4W"/>
@@ -122,12 +122,12 @@
                                     <constraint firstItem="Ebi-3n-Fmr" firstAttribute="leading" secondItem="mWc-Xt-4fK" secondAttribute="leading" constant="15" id="JSN-L9-SYL"/>
                                     <constraint firstItem="qsu-Rh-kgb" firstAttribute="top" secondItem="Ebi-3n-Fmr" secondAttribute="bottom" constant="8" id="M5Y-b3-Xzv"/>
                                     <constraint firstAttribute="bottom" secondItem="8QT-MB-Z5y" secondAttribute="bottom" constant="20" id="dw0-3a-qdr"/>
-                                    <constraint firstItem="IRe-gp-wAt" firstAttribute="leading" secondItem="8QT-MB-Z5y" secondAttribute="trailing" constant="15" id="gEe-3i-xrL"/>
+                                    <constraint firstItem="IRe-gp-wAt" firstAttribute="leading" secondItem="8QT-MB-Z5y" secondAttribute="trailing" constant="20" id="gEe-3i-xrL"/>
                                     <constraint firstAttribute="trailing" secondItem="Ebi-3n-Fmr" secondAttribute="trailing" constant="15" id="gzt-DK-Shv"/>
                                     <constraint firstItem="IRe-gp-wAt" firstAttribute="centerX" secondItem="mWc-Xt-4fK" secondAttribute="centerX" id="jki-W0-muX"/>
                                     <constraint firstAttribute="bottom" secondItem="Cbj-C5-Uh7" secondAttribute="bottom" constant="20" id="pNy-e6-LEE"/>
                                     <constraint firstItem="8QT-MB-Z5y" firstAttribute="top" secondItem="qsu-Rh-kgb" secondAttribute="bottom" constant="20" id="pQ8-zS-szR"/>
-                                    <constraint firstItem="Cbj-C5-Uh7" firstAttribute="leading" secondItem="IRe-gp-wAt" secondAttribute="trailing" constant="15" id="szH-2I-goK"/>
+                                    <constraint firstItem="Cbj-C5-Uh7" firstAttribute="leading" secondItem="IRe-gp-wAt" secondAttribute="trailing" constant="20" id="szH-2I-goK"/>
                                 </constraints>
                             </view>
                         </subviews>

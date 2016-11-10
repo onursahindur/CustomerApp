@@ -12,7 +12,7 @@
 "SelectTaskForm" = "Please select a taskform";
 
 // CASubmissionCollectionViewCell
-"TapToSeeBig" = "(Tap to see the original photo)";
+"TapToSeeBig" = "(Tap to see %ld photo(s))";
 "TapToSeeLocation" = "(Tap to see location on map)";
 
 // Error messages
