@@ -54,15 +54,14 @@ static CGFloat const kLeftPadding = 10.0f;
     cell.questionLabel.text = question.labelText;
     cell.answerLabel.text = belongingAnswer ? belongingAnswer.value : NSLocalizedString(@"NoAnswer", nil);
     
-    if (question.questionType == CAQuestionTypeImage)
+    if (question.questionType == CAQuestionTypeImage
+        || question.questionType == CAQuestionTypeLocation)
     {
         cell.imageUploadedView.hidden = NO;
         [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:belongingAnswer.value]
-                                  placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
-        cell.imageViewHeightConstraint.constant = 25.0f;
-        cell.imageViewWidthConstraint.constant = 25.0f;
+                                  placeholderImage:[UIImage imageNamed:question.questionType == CAQuestionTypeImage ? @"photoPlaceholder" : @"location"]];
         cell.answerLabelLeftConstraint.constant = kLeftPadding * 5;
-        cell.answerLabel.text = NSLocalizedString(@"TapToSeeBig", nil);
+        cell.answerLabel.text = NSLocalizedString(question.questionType == CAQuestionTypeImage ? @"TapToSeeBig" : @"TapToSeeLocation", nil);
         cell.answerLabel.font = [UIFont italicSystemFontOfSize:15.0f];
     }
     else
@@ -89,6 +88,25 @@ static CGFloat const kLeftPadding = 10.0f;
         self.bigPhotoToDisplay.caption = question.labelText;
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:browser];
         [self.parentViewController presentViewController:navController animated:YES completion:nil];
+    }
+    else if (question.questionType == CAQuestionTypeLocation)
+    {
+        CAAnswer *belongingAnswer = [self findAnswer:question];
+        NSRange startIndex = [belongingAnswer.value rangeOfString:@"("];
+        NSRange endIndex = [belongingAnswer.value rangeOfString:@")"];
+        
+        if (startIndex.location == NSNotFound || endIndex.location == NSNotFound)
+        {
+            DebugLog(@"Internal Server Error");
+            return;
+        }
+        
+        NSString *pointString = [belongingAnswer.value substringWithRange:NSMakeRange(startIndex.location + 1, endIndex.location - startIndex.location - 1)];
+        CGFloat latitude = [[[pointString componentsSeparatedByString:@" "] lastObject] floatValue];
+        CGFloat longitude = [[[pointString componentsSeparatedByString:@" "] firstObject] floatValue];
+        DebugLog(@"Internal Server Error");
+        NSString *appleMapsLink = [NSString stringWithFormat:@"http://maps.apple.com/maps?ll=%f,%f", latitude, longitude];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: appleMapsLink]];
     }
 }
 

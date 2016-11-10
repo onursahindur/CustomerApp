@@ -9,6 +9,7 @@
 typedef enum
 {
     CAQuestionTypeImage,
+    CAQuestionTypeLocation,
     CAQuestionTypeOthers
 }CATaskFormQuestionType;
 

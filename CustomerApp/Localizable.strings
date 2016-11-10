@@ -12,7 +12,8 @@
 "SelectTaskForm" = "Please select a taskform";
 
 // CASubmissionCollectionViewCell
-"TapToSeeBig" = "(Tap here to see the big photo)";
+"TapToSeeBig" = "(Tap to see the original photo)";
+"TapToSeeLocation" = "(Tap to see location on map)";
 
 // Error messages
 "Error" = "Error";

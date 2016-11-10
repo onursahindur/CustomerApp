@@ -18,7 +18,18 @@
     {
         _questionId = [[dict safeObjectForKey:@"id"] integerValue];
         _labelText = [dict safeObjectForKey:@"label"];
-        _questionType = [[dict safeObjectForKey:@"question_type"] containsString:@"image"] ? CAQuestionTypeImage : CAQuestionTypeOthers;
+        if ([[dict safeObjectForKey:@"question_type"] containsString:@"image"])
+        {
+            _questionType = CAQuestionTypeImage;
+        }
+        else if ([[dict safeObjectForKey:@"question_type"] containsString:@"location"])
+        {
+            _questionType = CAQuestionTypeLocation;
+        }
+        else
+        {
+            _questionType = CAQuestionTypeOthers;
+        }
     }
     return self;
 }
