@@ -6,11 +6,17 @@
 //  Copyright © 2016 onursahindur. All rights reserved.
 //
 
+typedef enum
+{
+    CAQuestionTypeImage,
+    CAQuestionTypeOthers
+}CATaskFormQuestionType;
+
 @interface CATaskFormQuestion : NSObject
 
-@property (nonatomic, assign) NSInteger  questionId;
-@property (nonatomic, strong) NSString   *labelText;
-@property (nonatomic, strong) NSString   *questionType;
+@property (nonatomic, assign) NSInteger                 questionId;
+@property (nonatomic, strong) NSString                  *labelText;
+@property (nonatomic, assign) CATaskFormQuestionType    questionType;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 

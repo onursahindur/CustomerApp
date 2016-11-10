@@ -18,7 +18,7 @@ static NSString *const kTableViewCellIdentifier = @"CAAnswerTableViewCell";
 @interface CASubmissionCollectionViewCell () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) MWPhoto *bigPhotoToDisplay;
+@property (strong, nonatomic) MWPhoto   *bigPhotoToDisplay;
 
 @end
 
@@ -53,44 +53,40 @@ static CGFloat const kLeftPadding = 10.0f;
     CAAnswer *belongingAnswer = [self findAnswer:question];
     cell.questionLabel.text = question.labelText;
     cell.answerLabel.text = belongingAnswer ? belongingAnswer.value : NSLocalizedString(@"NoAnswer", nil);
-    if ([cell.answerLabel.text containsString:@"http"]
-        && [cell.answerLabel.text containsString:@"photos"])
-    {
-        cell.answerLabel.text = NSLocalizedString(@"TapToSeeBig", nil);
-    }
+    
     CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
     cell.answerLabelHeightConstraint.constant = estimatedHeight;
     
-    
-    // Since images are loading with big sizes, no thumbnails are used, They are loading with low speed.
-    // This causes that UITableView to not scroll smoothly. Comment in the code below, to see how it works.
-//    if ([cell.answerLabel.text containsString:@"photos"])
-//    {
-//        cell.imageUploadedView.hidden = NO;
-//        [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:cell.answerLabel.text]
-//                                  placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
-//        cell.imageViewHeightConstraint.constant = 70.0f;
-//        cell.imageViewWidthConstraint.constant = 70.0f;
-//        cell.answerLabelLeftConstraint.constant = kLeftPadding * kLeftPadding;
-//    }
-//    else
-//    {
-//        cell.imageUploadedView.hidden = YES;
-//        cell.answerLabelLeftConstraint.constant = kLeftPadding;
-//    }
+    if (question.questionType == CAQuestionTypeImage)
+    {
+        cell.imageUploadedView.hidden = NO;
+        [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:belongingAnswer.value]
+                                  placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
+        cell.imageViewHeightConstraint.constant = 70.0f;
+        cell.imageViewWidthConstraint.constant = 70.0f;
+        cell.answerLabelLeftConstraint.constant = kLeftPadding * 10;
+        cell.answerLabel.text = NSLocalizedString(@"TapToSeeBig", nil);
+        cell.answerLabel.font = [UIFont italicSystemFontOfSize:15.0f];
+    }
+    else
+    {
+        cell.imageUploadedView.hidden = YES;
+        cell.answerLabelLeftConstraint.constant = kLeftPadding;
+        cell.answerLabel.font = [UIFont systemFontOfSize:15.0f];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CAAnswerTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CATaskFormQuestion *question = self.questionsArray[indexPath.row];
-    if ([cell.answerLabel.text isEqualToString:NSLocalizedString(@"TapToSeeBig", nil)])
+    if (question.questionType == CAQuestionTypeImage)
     {
         CAAnswer *belongingAnswer = [self findAnswer:question];
         MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
         self.bigPhotoToDisplay = [MWPhoto photoWithURL:[NSURL URLWithString:belongingAnswer.value]];
+        self.bigPhotoToDisplay.caption = question.labelText;
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:browser];
         [self.parentViewController presentViewController:navController animated:YES completion:nil];
     }
@@ -99,6 +95,8 @@ static CGFloat const kLeftPadding = 10.0f;
 - (void)reloadTableViewData
 {
     [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                          atScrollPosition:UITableViewScrollPositionNone animated:NO];
 }
 
 - (CAAnswer *)findAnswer:(CATaskFormQuestion *)question
