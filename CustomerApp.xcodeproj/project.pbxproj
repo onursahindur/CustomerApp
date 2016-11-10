@@ -18,12 +18,15 @@
 		622CECE21DD3474A00DAFB4E /* CASubmissionsLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECE11DD3474A00DAFB4E /* CASubmissionsLogic.m */; };
 		622CECEB1DD3498B00DAFB4E /* CAProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECEA1DD3498B00DAFB4E /* CAProject.m */; };
 		622CECEE1DD34AB900DAFB4E /* NSDictionary+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CECED1DD34AB900DAFB4E /* NSDictionary+Additions.m */; };
+		622CED2E1DD3746700DAFB4E /* CATaskForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 622CED2D1DD3746700DAFB4E /* CATaskForm.m */; };
 		626DEEA21DD310E900DFA46B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEA11DD310E900DFA46B /* main.m */; };
 		626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEA41DD310E900DFA46B /* AppDelegate.m */; };
 		626DEEAB1DD310E900DFA46B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEA91DD310E900DFA46B /* Main.storyboard */; };
 		626DEEAD1DD310E900DFA46B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEAC1DD310E900DFA46B /* Assets.xcassets */; };
 		626DEEB01DD310E900DFA46B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DEEAE1DD310E900DFA46B /* LaunchScreen.storyboard */; };
 		626DEEBB1DD310EA00DFA46B /* CustomerAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 626DEEBA1DD310EA00DFA46B /* CustomerAppTests.m */; };
+		62A1EC811DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */; };
+		62A1EC821DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */; };
 		CFD0F5D265A91662DC7A2A8C /* libPods-CustomerApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623124EEDBC81E92BBF39D72 /* libPods-CustomerApp.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,8 @@
 		622CECEA1DD3498B00DAFB4E /* CAProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAProject.m; sourceTree = "<group>"; };
 		622CECEC1DD34AB900DAFB4E /* NSDictionary+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Additions.h"; sourceTree = "<group>"; };
 		622CECED1DD34AB900DAFB4E /* NSDictionary+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Additions.m"; sourceTree = "<group>"; };
+		622CED2C1DD3746700DAFB4E /* CATaskForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATaskForm.h; sourceTree = "<group>"; };
+		622CED2D1DD3746700DAFB4E /* CATaskForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATaskForm.m; sourceTree = "<group>"; };
 		623124EEDBC81E92BBF39D72 /* libPods-CustomerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CustomerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEE9D1DD310E900DFA46B /* CustomerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEEA11DD310E900DFA46B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +76,9 @@
 		626DEEB61DD310EA00DFA46B /* CustomerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		626DEEBA1DD310EA00DFA46B /* CustomerAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerAppTests.m; sourceTree = "<group>"; };
 		626DEEBC1DD310EA00DFA46B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62A1EC7E1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CASubmissionCollectionViewCell.h; sourceTree = "<group>"; };
+		62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CASubmissionCollectionViewCell.m; sourceTree = "<group>"; };
+		62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CASubmissionCollectionViewCell.xib; sourceTree = "<group>"; };
 		722A145B8F7DAE692EDD86DA /* Pods-CustomerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		787D4738A2DBAAD37295C855 /* Pods-CustomerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerApp/Pods-CustomerApp.release.xcconfig"; sourceTree = "<group>"; };
 		8CC1ECFD870D8E1BC7E51A77 /* Pods-CustomerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomerAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomerAppTests/Pods-CustomerAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +206,8 @@
 			children = (
 				622CECE91DD3498B00DAFB4E /* CAProject.h */,
 				622CECEA1DD3498B00DAFB4E /* CAProject.m */,
+				622CED2C1DD3746700DAFB4E /* CATaskForm.h */,
+				622CED2D1DD3746700DAFB4E /* CATaskForm.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -246,6 +256,9 @@
 		626DEECB1DD3117000DFA46B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				62A1EC7E1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.h */,
+				62A1EC7F1DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m */,
+				62A1EC801DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,6 +371,7 @@
 			files = (
 				626DEEB01DD310E900DFA46B /* LaunchScreen.storyboard in Resources */,
 				626DEEAD1DD310E900DFA46B /* Assets.xcassets in Resources */,
+				62A1EC821DD3EDF800F415B7 /* CASubmissionCollectionViewCell.xib in Resources */,
 				626DEEAB1DD310E900DFA46B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,11 +489,13 @@
 				622CECD81DD33C4000DAFB4E /* CASubmissionsViewController.m in Sources */,
 				622CECDF1DD3429B00DAFB4E /* CANavigationBarStyler.m in Sources */,
 				622CECD01DD314A300DAFB4E /* CAAlertManager.m in Sources */,
+				62A1EC811DD3EDF800F415B7 /* CASubmissionCollectionViewCell.m in Sources */,
 				622CECD51DD316AA00DAFB4E /* Reachability.m in Sources */,
 				622CECCA1DD3148900DAFB4E /* CAManager.m in Sources */,
 				626DEEA51DD310E900DFA46B /* AppDelegate.m in Sources */,
 				626DEEA21DD310E900DFA46B /* main.m in Sources */,
 				622CECE21DD3474A00DAFB4E /* CASubmissionsLogic.m in Sources */,
+				622CED2E1DD3746700DAFB4E /* CATaskForm.m in Sources */,
 				622CECDC1DD33D0C00DAFB4E /* UIView+Loading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,4 +19,8 @@ typedef void (^FailureBlock)(NSError *error);
 - (void)getProjectListWithSuccessBlock:(void (^)(NSArray *))successBlock
                           failureBlock:(FailureBlock)failureBlock;
 
+- (void)getProjectTaskFormsWithProjectId:(NSString *)projectId
+                        withSuccessBlock:(void (^)(NSArray *))successBlock
+                            failureBlock:(FailureBlock)failureBlock;
+
 @end

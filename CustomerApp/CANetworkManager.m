@@ -259,11 +259,29 @@ static NSString *kProjectTaskformSubmissionsURL         = @"projects/%@/task_for
             successBlock(nil);
         }
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        failureBlock(nil);
+        failureBlock(error);
     }];
 }
 
-
+- (void)getProjectTaskFormsWithProjectId:(NSString *)projectId
+                        withSuccessBlock:(void (^)(NSArray *))successBlock
+                            failureBlock:(FailureBlock)failureBlock
+{
+    NSString *urlString = [NSString stringWithFormat:kProjectTaskformsURL, projectId];
+    [self GET:urlString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject)
+    {
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]])
+        {
+            successBlock((NSArray *)responseObject[@"data"]);
+        }
+        else
+        {
+            successBlock(nil);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failureBlock(error);
+    }];
+}
 
 
 

@@ -31,6 +31,7 @@ typedef enum
 
 // Data to be collected.
 @property (nonatomic, strong) NSMutableArray *projects;
+@property (nonatomic, strong) NSMutableArray *projectTaskForms;
 @property (nonatomic, strong) NSMutableArray *submissions;
 
 @property (nonatomic, weak) id<CASubmissionsLogicDelegate>delegate;

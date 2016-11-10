@@ -8,6 +8,7 @@
 
 #import "CASubmissionsLogic.h"
 #import "CAProject.h"
+#import "CATaskForm.h"
 
 @implementation CASubmissionsLogic
 
@@ -43,6 +44,33 @@
 
 - (void)loadProjectTaskForms:(NSString *)projectId
 {
+    if ([self.delegate respondsToSelector:@selector(dataLoading)])
+    {
+        [self.delegate dataLoading];
+    }
+    
+    __weak typeof (self) weakSelf = self;
+    [[CANetworkManager sharedInstance] getProjectTaskFormsWithProjectId:projectId withSuccessBlock:^(NSArray *taskFormArray)
+    {
+        __strong typeof (weakSelf) strongSelf = weakSelf;
+        strongSelf.projectTaskForms = [NSMutableArray new];
+        for (NSDictionary *dict in taskFormArray)
+        {
+            [strongSelf.projectTaskForms addObject:[[CATaskForm alloc] initWithDictionary:dict]];
+        }
+        if ([strongSelf.delegate respondsToSelector:@selector(dataLoadedWithDataType:)])
+        {
+            [strongSelf.delegate dataLoadedWithDataType:CASubmissionDataProjectTaskForms];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        if ([weakSelf.delegate respondsToSelector:@selector(dataLoadedWithError:withDataType:)])
+        {
+            [weakSelf.delegate dataLoadedWithError:error withDataType:CASubmissionDataProjectTaskForms];
+        }
+    }];
+    
+    
     
 }
 
