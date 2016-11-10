@@ -213,6 +213,7 @@ static NSInteger kStaticProjectId = 685;
         {
             // Same page do nothing..  Nothing to do here..
             // Don't want to live on this "else" planet anymore..
+            // Ehe. Not funny?
         }
     }
 }

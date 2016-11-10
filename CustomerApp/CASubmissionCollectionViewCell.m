@@ -17,8 +17,8 @@ static NSString *const kTableViewCellIdentifier = @"CAAnswerTableViewCell";
 
 @interface CASubmissionCollectionViewCell () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) MWPhoto   *bigPhotoToDisplay;
+@property (weak, nonatomic) IBOutlet UITableView    *tableView;
+@property (strong, nonatomic) MWPhoto               *bigPhotoToDisplay;
 
 @end
 
@@ -54,17 +54,14 @@ static CGFloat const kLeftPadding = 10.0f;
     cell.questionLabel.text = question.labelText;
     cell.answerLabel.text = belongingAnswer ? belongingAnswer.value : NSLocalizedString(@"NoAnswer", nil);
     
-    CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
-    cell.answerLabelHeightConstraint.constant = estimatedHeight;
-    
     if (question.questionType == CAQuestionTypeImage)
     {
         cell.imageUploadedView.hidden = NO;
         [cell.imageUploadedView sd_setImageWithURL:[NSURL URLWithString:belongingAnswer.value]
                                   placeholderImage:[UIImage imageNamed:@"photoPlaceholder"]];
-        cell.imageViewHeightConstraint.constant = 70.0f;
-        cell.imageViewWidthConstraint.constant = 70.0f;
-        cell.answerLabelLeftConstraint.constant = kLeftPadding * 10;
+        cell.imageViewHeightConstraint.constant = 25.0f;
+        cell.imageViewWidthConstraint.constant = 25.0f;
+        cell.answerLabelLeftConstraint.constant = kLeftPadding * 5;
         cell.answerLabel.text = NSLocalizedString(@"TapToSeeBig", nil);
         cell.answerLabel.font = [UIFont italicSystemFontOfSize:15.0f];
     }
@@ -74,6 +71,9 @@ static CGFloat const kLeftPadding = 10.0f;
         cell.answerLabelLeftConstraint.constant = kLeftPadding;
         cell.answerLabel.font = [UIFont systemFontOfSize:15.0f];
     }
+    
+    CGFloat estimatedHeight = [self sizeOfMultiLineLabel:cell.answerLabel].height;
+    cell.answerLabelHeightConstraint.constant = estimatedHeight;
     
     return cell;
 }
@@ -99,6 +99,7 @@ static CGFloat const kLeftPadding = 10.0f;
                           atScrollPosition:UITableViewScrollPositionNone animated:NO];
 }
 
+#pragma mark - Helpers
 - (CAAnswer *)findAnswer:(CATaskFormQuestion *)question
 {
     for (CAAnswer *answer in self.answersArray)
