@@ -952,6 +952,7 @@ static const CGFloat kScrollViewBottomSpace = 5;
 @property (strong, nonatomic) NSMutableArray<NSNumber *> *components;
 @property (assign, nonatomic) NSInteger selectedComponent;
 @property (strong, nonatomic) NSMutableArray<NSMutableIndexSet *> *selectedRows;
+@property (assign, nonatomic) BOOL appearedOnce;
 
 @end
 
@@ -1102,7 +1103,6 @@ static const CGFloat kScrollViewBottomSpace = 5;
             }
             
         }
-        
         [button setAttributedTitle:attributedTitle selectedTitle:attributedSelectedTitle];
     }
 }
@@ -1348,7 +1348,10 @@ static const CGFloat kScrollViewBottomSpace = 5;
 
 - (void)reloadAllComponents {
     [self setupComponents];
-    [self updateComponentButtons];
+    if (!self.appearedOnce)
+    {
+        [self updateComponentButtons];
+    }
     [self setNeedsLayout];
     [self.contentViewController updateData];
 }
@@ -1655,6 +1658,7 @@ static const CGFloat kScrollViewBottomSpace = 5;
         
         // Onur edited.
         self.selectedRow = row;
+        self.appearedOnce = YES;
         MKDropdownMenuComponentButton *button = [self.buttons firstObject];
         [button setAttributedTitle:[[NSAttributedString alloc] initWithString:[self.delegate dropdownMenu:self titleForRow:row forComponent:self.selectedComponent]] selectedTitle:[[NSAttributedString alloc] initWithString:[self.delegate dropdownMenu:self titleForRow:row forComponent:self.selectedComponent]]];
         ////////////////////////
